@@ -16,6 +16,7 @@
 
   tasks:
     - name: Facts
+      tags: always
       block:
       - name: Get instance facts
         ec2_instance_facts:
@@ -24,14 +25,14 @@
           region: "{{ region }}"
         register: result
 
-    - name: Instances ID
-      debug:
-        msg: "ID: {{ item.instance_id }} - State: {{ item.state.name }} - Public DNS: {{ item.public_dns_name }}"
-      loop: "{{ result.instances }}"
+      - name: Instances ID
+        debug:
+          msg: "ID: {{ item.instance_id }} - State: {{ item.state.name }} - Public DNS: {{ item.public_dns_name }}"
+        loop: "{{ result.instances }}"
 
-  tags: always
 
     - name: Provisioning EC2 instances
+      tags: ['never', 'create_ec2']
       block:
       - name: Upload public key to AWS
         ec2_key:
@@ -75,5 +76,3 @@
           #   Name: App
           # instance_tags:
           #   Name: App
-        
-       tags: ['never', 'create_ec2']
