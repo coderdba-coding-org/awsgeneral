@@ -44,3 +44,9 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/my_aws
 --> Copy my_aws and my_aws.pub to /tmp - from where the ansible yaml will pick them up
 --> Alternatively, if you already have a key-pair then copy them as my_aws and my_aws.pub in /tmp
 
+- CREATE THE PLAYBOOK
+ec2-instance2.yml (or other)
+
+- RUN THE PLAYBOOK
+ansible-playbook ec2-instance2.yaml --ask-vault-pass
+

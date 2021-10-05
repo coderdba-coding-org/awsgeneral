@@ -27,9 +27,9 @@
     - name: Instances ID
       debug:
         msg: "ID: {{ item.instance_id }} - State: {{ item.state.name }} - Public DNS: {{ item.public_dns_name }}"
-      loop: {{ result.instances }}"
+      loop: "{{ result.instances }}"
 
-    tags: always
+  tags: always
 
     - name: Provisioning EC2 instances
       block:
