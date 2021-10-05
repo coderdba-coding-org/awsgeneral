@@ -3,4 +3,5 @@ git config --global user.name "coderdba"
 
 git add .
 git commit -m "updates"
-git push -u origin master
+#git push -u origin master
+git push 
